@@ -6,13 +6,13 @@ import User from "@/lib/database/models/user.model";
 import Order from "@/lib/database/models/order.model";
 import Event from "@/lib/database/models/event.model";
 import { handleError } from "@/lib/utils";
-import { connectToDatabse } from "@/lib/database";
+import { connectToDatabase } from "@/lib/database";
 
 import { CreateUserParams, UpdateUserParams } from "@/types";
 
 export async function createUser(user: CreateUserParams) {
   try {
-    await connectToDatabse();
+    await connectToDatabase();
 
     const newUser = await User.create(user);
     return JSON.parse(JSON.stringify(newUser));
@@ -23,7 +23,7 @@ export async function createUser(user: CreateUserParams) {
 
 export async function getUserById(userId: string) {
   try {
-    await connectToDatabse();
+    await connectToDatabase();
 
     const user = await User.findById(userId);
 
@@ -36,7 +36,7 @@ export async function getUserById(userId: string) {
 
 export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
-    await connectToDatabse();
+    await connectToDatabase();
 
     const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
       new: true,
@@ -51,7 +51,7 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
 
 export async function deleteUser(clerkId: string) {
   try {
-    await connectToDatabse();
+    await connectToDatabase();
 
     // Find user to delete
     const userToDelete = await User.findOne({ clerkId });
