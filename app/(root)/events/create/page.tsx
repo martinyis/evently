@@ -1,12 +1,15 @@
+"use server";
 import EventForm from "@/components/shared/EventForm";
 import { auth } from "@clerk/nextjs";
-import React from "react";
+import React, { useEffect } from "react";
 
 type Props = {};
 
 function CreateEvent({}: Props) {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
+
+  console.log("userId", userId);
   return (
     <>
       <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">

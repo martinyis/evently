@@ -1,6 +1,6 @@
 import EventForm from "@/components/shared/EventForm";
 import { auth } from "@clerk/nextjs";
-import React from "react";
+import React, { useEffect } from "react";
 
 type Props = {};
 
